@@ -1,0 +1,13 @@
+clear all;
+close all;
+
+addpath('descripteurs');
+%I = imread('tools.gif');
+I = marche();
+[Ix,Iy] = compute_gradient(I);
+Ig = (Ix.^2 + Iy.^2).^(0.5);
+Ior = orientation(Ix,Iy,Ig);
+patch = I(121:136,121:136);
+
+
+%imshow(Ior);
