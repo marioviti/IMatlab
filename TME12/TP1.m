@@ -3,8 +3,8 @@ close all;
 
 addpath('descripteurs');
 s = 16;
-%I = imread('tools.gif'),
-I = marche();
+I = imread('tools.gif'),
+%I = marche();
 
 coordx = 121;
 coordy = 121;
