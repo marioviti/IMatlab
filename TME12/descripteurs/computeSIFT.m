@@ -1,4 +1,4 @@
-function sift=computeSIFT(s,Ig,Ior,Mg)
+function sift = computeSIFT(s,Ig,Ior,Mg,contrast_tresh)
     %computeSIFT computes sift descriptor vector for a image patch
     function [histo] = subpatchSIFT(MIgr,Ior)
         histo = zeros(8,1);
@@ -18,8 +18,14 @@ function sift=computeSIFT(s,Ig,Ior,Mg)
            sift( (((ibin-1)*8*4) + (jbin-1)*8) + 1: ((ibin-1)*8*4) + (jbin)*8) = histo;
         end
     end
-    sift=sift/norm(sift);
-    sift(sift>0.2) = 0.2;
-    sift=sift/norm(sift);
+    % check constrast
+    norm_sift = norm(sift);
+    if norm_sift >= contrast_tresh 
+        sift=sift/norm(sift);
+        sift(sift>0.2) = 0.2;
+        sift=sift/norm(sift);
+    else
+        sift = zeros(128,1);
+    end
 end
 
