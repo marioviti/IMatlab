@@ -3,6 +3,11 @@ function [sifts,r] = computeSIFTsImage(I,s,delta,contrast_tresh)
     %s = 16;
     % sampling step
     %delta = 8;
+    if nargin == 1
+        s = 16;
+        delta = 8;
+        contrast_tresh = 0.8;
+    end
     [Ix,Iy] = compute_gradient(I);
     Ig = (Ix.^2 + Iy.^2).^(0.5);
     Ior = orientation(Ix,Iy,Ig);

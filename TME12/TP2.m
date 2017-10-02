@@ -17,7 +17,7 @@ listPts = [listPts.',listPts2.'].';
 size(listPts)
 nc = randi(K,1,N);
 centers = rand(K,d);
-centers = centers - mean(centers);
+%centers = centers - mean(centers);
 centers = centers *10;
 
 

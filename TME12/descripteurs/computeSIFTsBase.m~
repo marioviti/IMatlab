@@ -5,10 +5,10 @@ close all;
 cate = categories();
 
 % A REMPLACER AVEC LE DOSSIER CONTENANT LES IMAGES 
-pathim = './Scene/';
+pathim = './Scene';
 
 % A REMPLACER AVEC LE DOSSIER CONTENANT LES DESCRIPTEURS SIFT 
-pathdes = './descriptors3/';
+pathdes = './descriptors3';
 
 s= 16;
 delta = 8;
