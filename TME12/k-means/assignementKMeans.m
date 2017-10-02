@@ -6,4 +6,3 @@ function [ nc ] = assignementKMeans( listPts , centers )
     d_xc = ctc_n - 2*ctx;
     [C,nc] = min(d_xc);
 end
-
