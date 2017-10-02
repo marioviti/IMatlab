@@ -1,4 +1,4 @@
-%% init aleatoire de données jouet
+% init aleatoire de données jouet
 
 clear all;
 close all;
@@ -11,7 +11,7 @@ plot(X(:,1), X(:,2), '.')
 hold on
 plot(C(:,1), C(:,2), 'o')
 
-%% assignation aux clusters
+% assignation aux clusters
 %
 % 1. calcul de la distance entre X et C
 % 2. recuperation de l'argmin pour chaque xi
@@ -63,7 +63,7 @@ for i = 1:4
     plot(X(nc == i, 1), X(nc == i, 2), '.')
 end
 
-%% recalcul des centres
+%recalcul des centres
 %
 % pour chaque cluster:
 % 1. calcul du centre
@@ -82,7 +82,7 @@ for i = 1:size(C, 1)
     plot([C(i,1); C_new(i,1)], [C(i,2); C_new(i,2)], 'b-')
 end
 
-%% iterer
+% iterer
 %
 % mettre le code ci dessus dans 2 fonctions, iterer, regarder les centres
 % se deplacer. une fois le code fonctionnel, le mettre dans une fonction
