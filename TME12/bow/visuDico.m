@@ -3,7 +3,7 @@ function [ patchmin ] = visuDico( nomDico ,  baseDir , baseDirDes)
 
 load(nomDico);
 
-K = size(centers,1);
+K = size(clusters,1);
 
 s=16;
 delta=8;
@@ -26,6 +26,8 @@ for index=1:15
     listdes=dir([desdir '*.mat'] );
     ni = length(listdes);
     
+        
+    
     for k=1:pas:ni
         if(mod(k,100)==0)
             k
@@ -34,6 +36,8 @@ for index=1:15
         namedes2 =strcat(desdir,namedes);
         load(namedes2);
         
+        
+        %%
         nameim = strcat(namedes(1:length(namedes)-4),'.jpg');
         nameim2 =strcat(desim,nameim);
         I = imread(nameim2);
@@ -46,7 +50,7 @@ for index=1:15
         
         
         N = size(y,2);
-        M =  size(centers,1);
+        M =  size(clusters,1);
         D= zeros(N,M);
         
         A = zeros(N,1);
@@ -57,10 +61,10 @@ for index=1:15
         
         C = zeros(1,M);
         for i=1:M
-            C(1,i) = norm(centers(i,:)).^2;
+            C(1,i) = norm(clusters(i,:)).^2;
         end
         C = repmat(C,N,1);
-        B = y' * centers';
+        B = y' * clusters';
         
         D = A + C - 2*B;
         

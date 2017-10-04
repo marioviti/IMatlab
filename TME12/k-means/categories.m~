@@ -1,0 +1,10 @@
+function [cate] = categories(pathDes)
+
+cate = [];
+directory = dir(pathDes);
+for subd = directory
+   cate = [cate; string(subd.name)]; 
+end
+cate
+end
+
