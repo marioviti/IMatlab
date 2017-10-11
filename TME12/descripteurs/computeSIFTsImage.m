@@ -6,7 +6,7 @@ function [sifts,r] = computeSIFTsImage(I,s,delta,contrast_tresh)
     if nargin == 1
         s = 16;
         delta = 8;
-        contrast_tresh = 0.8;
+        contrast_tresh = 1.2;
     end
     [Ix,Iy] = compute_gradient(I);
     Ig = (Ix.^2 + Iy.^2).^(0.5);
