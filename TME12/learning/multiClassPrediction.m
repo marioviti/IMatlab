@@ -1,21 +1,18 @@
-function [ matConf, txCat ] = multiClassPrediction(predictclassifieurs, imCatTest)
-
-    [n_cat,one] = size(imCatTest);
-    imCatTest2 = zeros(n_cat+1,one)+1;
-    imCatTest2(2:end)=imCatTest;
-    matConf = zeros(n_cat,n_cat);
-    
-    txCat = zeros(n_cat,1);
-    
-    % loop over classifiers one per cat
-    for i=1:n_cat
-        % loop over examples per cat
-        for j=1:n_cat
-            for k=imCatTest2(j):imCatTest2(j+1)
-                matConf(i,j) = matConf(i,j) + predictclassifieurs(k,i);
-            end
+function [ confusionMatrix , nGoodCat ] = multiClassPrediction(predictclassifieurs , imCatTest )
+    rang = 1;
+    [n_cat,~]=size(imCatTest);
+    confusionMatrix = zeros(n_cat,n_cat);
+    for cat = 1:n_cat
+        for element = 1: imCatTest(cat)
+            col =max(predictclassifieurs(:,rang))==predictclassifieurs(:,rang);
+            col = col./imCatTest(cat);
+            confusionMatrix(cat,:) = confusionMatrix(cat,:) + col';  
+            rang = rang+1;
         end
     end
-   
+    confusionMatrix = confusionMatrix*100;
+    for i =1:n_cat
+        nGoodCat(i) = confusionMatrix(i,i);
+    end
 end
 

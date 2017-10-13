@@ -1,11 +1,11 @@
-
 addpath('descripteurs');
 addpath('bow');
 addpath('k-means');
 addpath('learning');
+addpath('libsvm');
 
-pathBow = './descriptors_bow/';
-K = 1000;
+pathBow = './descriptors_bow2/';
+K = 1001;
 nTrain = 100;
 
 [imCat, imCatTest] = NbImCatAllTest( pathBow, nTrain );

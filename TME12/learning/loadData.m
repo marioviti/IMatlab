@@ -9,13 +9,11 @@ ntest = imTot-ncat*nTrain;
 train = zeros(ncat*nTrain,K);
 test = zeros(ntest,K);
 
-
 'chargement donnees train/test'
 cpt=1;
 cptTest=1;
 
 for i=1:ncat
-    
     
     y = zeros(1,ncat*nTrain);
     ytest = zeros(1,ntest);
@@ -31,7 +29,6 @@ for i=1:ncat
         namedes = listdes(ra(k)).name;
         namedes2 =strcat(desdir,namedes);
         load(namedes2);
-        
         train(cpt,:) = bow;
         cpt = cpt+1;
         
@@ -40,9 +37,7 @@ for i=1:ncat
         namedes = listdes(ra(k)).name;
         namedes2 =strcat(desdir,namedes);
         load(namedes2);
-        
         test(cptTest,:) = bow;
-        
         cptTest = cptTest+1;
     end
     % fin chargement de l'ensemble des bow en train / test
