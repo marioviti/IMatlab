@@ -1,6 +1,6 @@
 function [w,b] = getW_from_alphas(model,y)
     % bilinarietà sui kernel nel dual relazione alpha svm e w
-    b = model.Bias;
+    b = -model.Bias;
     svms = model.SupportVectors;
     svms_index = model.SupportVectorIndices;
     alphas = model.Alpha;

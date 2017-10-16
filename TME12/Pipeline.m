@@ -1,10 +1,22 @@
-clear all;
 close all;
 
 addpath('descripteurs');
 addpath('learning');
 addpath('bow');
-%addpath('k-means');
+addpath('k-means');
+
+% A REMPLACER AVEC LE DOSSIER CONTENANT LES IMAGES 
+pathsrc = './Scene/';
+
+% A REMPLACER AVEC LE DOSSIER CONTENANT LES DESCRIPTEURS SIFT 
+pathsifts = './descriptorsSIFTs/';
+
+% VISUAL DICTIONARY LOCATION
+pathdico = './visualdico/';
+name_dico = 'clusters.mat';
+
+% BOW descriptions
+pathbow = './descriptorsBOWs/';
 
 % parameters of pipeline
 
@@ -23,18 +35,7 @@ keps = 1e-3;
 % max epochs in convergence
 kepochs = 1000;
 
-% A REMPLACER AVEC LE DOSSIER CONTENANT LES IMAGES 
-pathsrc = './Scene/';
 
-% A REMPLACER AVEC LE DOSSIER CONTENANT LES DESCRIPTEURS SIFT 
-pathsifts = './descriptorsSIFTs/';
-
-% VISUAL DICTIONARY LOCATION
-pathdico = './visualdico/';
-name_dico = 'clusters.mat';
-
-% BOW descriptions
-pathbow = './descriptionBOWs/';
 
 [check,~] = size(dir(pathsifts));
 if check == 0
@@ -65,7 +66,7 @@ end
 mess ='loaded Bow';
 mess
 
-nTrain = 100;
+nTrain = 110;
 
 [imCat, imCatTest] = NbImCatAllTest( pathbow, nTrain );
 [train, test] = loadData( nTrain, imCat, pathbow, K );
