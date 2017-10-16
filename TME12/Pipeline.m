@@ -2,6 +2,7 @@ close all;
 
 addpath('descripteurs');
 addpath('learning');
+addpath('libsvm');
 addpath('bow');
 addpath('k-means');
 
@@ -36,7 +37,6 @@ keps = 1e-3;
 kepochs = 1000;
 
 
-
 [check,~] = size(dir(pathsifts));
 if check == 0
     computeSIFTsBase(pathsrc,pathsifts,noisethres);
@@ -66,13 +66,13 @@ end
 mess ='loaded Bow';
 mess
 
-nTrain = 110;
+nTrain = 100;
 
+% dividing training and test data
 [imCat, imCatTest] = NbImCatAllTest( pathbow, nTrain );
 [train, test] = loadData( nTrain, imCat, pathbow, K );
 [ntest, K] = size(test);
 [num_cat,one] = size(imCat);
-
 predictclassifieurs = zeros(num_cat,ntest);
 
 for i=1:num_cat
@@ -81,13 +81,14 @@ for i=1:num_cat
     predictclassifieurs(i,:) = values;
 end
 
-[ confusionMatrix, nGoodCat ] = multiClassPrediction(predictclassifieurs, imCatTest)
+[ confusionMatrix, nGoodCat ] = multiClassPrediction(predictclassifieurs, imCatTest);
 
 figure();
 subplot(2,1,1);
 plot(nGoodCat);
 subplot(2,1,2);
 imagesc(confusionMatrix);
+
 
 
 
