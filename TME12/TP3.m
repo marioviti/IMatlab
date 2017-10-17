@@ -1,6 +1,6 @@
 baseDir = './Scene/';
-baseDirDes = './sifts/';
-baseDirDico = './clusters.mat';
+baseDirDes = './descriptorsSIFTs/';
+baseDirDico = './visualdico/clusters.mat';
 [I,nomim,sifts] = randomImageDes(baseDir, baseDirDes);
 load(baseDirDico);
 %clusters = centers;

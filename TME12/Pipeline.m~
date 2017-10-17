@@ -115,27 +115,21 @@ imagesc(confusionMatrix);
 
 % compute heatmap
 
-cat_test = 2;
-test_image_name = 'PARoffice/image_0198';
+cat_test = 6;
+test_image_name = 'MITmountain/image_0337';
 test_name = strcat('./Scene/',test_image_name,'.jpg');
 image_test = imread(test_name);
 test_sift_name = strcat('./descriptorsSIFTs/',test_image_name,'.mat');
 sift_test = load(test_sift_name);
 sift_test = sift_test.sifts;
 
-[heatmap,nc] = test_heatmap_prediction(image_test, sift_test, clusters, ws, cat_test);
+heatmap = test_heatmap_prediction(image_test, sift_test, clusters, ws, cat_test);
 
 figure();
 subplot(2,1,1);
-imagesc(image_test);
+images(image_test);
 subplot(2,1,2);
-imagesc(heatmap);
-
-baseDir = './Scene/';
-baseDirDes = './descriptorsSIFTs/';
-baseDirDico = './visualdico/clusters.mat';
-[patchmin] = visuDico(baseDirDico, baseDir, baseDirDes);
-visuHeatMap( image_test , nc, ws(cat_test,:)', heatmap, patchmin , test_image_name);
+images(image_test);
 
 
 

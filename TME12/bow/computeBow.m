@@ -1,4 +1,4 @@
-function [bow ]= computeBow(sifts, clusters, matNormClusters)
+function [bow,nc]= computeBow(sifts, clusters, matNormClusters)
     [K,d] = size(clusters);
     [d,N] = size(sifts);
     H = zeros(K,N);

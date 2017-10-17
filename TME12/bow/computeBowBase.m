@@ -28,7 +28,7 @@ for index=catinit:catend
         load(strcat(direc,listima(num).name));
         
         % CALCUL DES BOW (VOTRE FONCTION)
-        [bow] = computeBow(sifts,clusters,matNormClusters);
+        [bow,~] = computeBow(sifts,clusters,matNormClusters);
         
         % STOCKAGE DES BOW
         desname = strcat(pathcat,listima(num).name(1:length(listima(num).name)-4),'.mat');
